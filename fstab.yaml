@@ -1,4 +1,4 @@
 mountpoints:
   /:
-    url: https://content.da.live/acs-content-commerce/acs-content-commerce/ai-content-enrichment-presentation
+    url: https://content.da.live/acs-content-commerce/ai-content-enrichment-presentation
     type: markup
