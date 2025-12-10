@@ -90,4 +90,20 @@ export default function decorate(block) {
       block.classList.add('team-many');
     }
   }
+
+  // Make project cards fully clickable
+  if (block.classList.contains('project')) {
+    ul.querySelectorAll('li').forEach((li) => {
+      const link = li.querySelector('a');
+      if (link) {
+        const href = link.href;
+        // Wrap entire card content in an anchor
+        const wrapper = document.createElement('a');
+        wrapper.href = href;
+        wrapper.className = 'cards-card-link';
+        while (li.firstChild) wrapper.append(li.firstChild);
+        li.append(wrapper);
+      }
+    });
+  }
 }
