@@ -1,20 +1,99 @@
+/* Footer block styles */
 footer {
-  background-color: var(--light-color);
+  background-color: transparent !important;
   font-size: var(--body-font-size-xs);
+  color: white !important;
 }
 
-footer .footer > div {
+.footer {
   margin: auto;
   max-width: 1200px;
-  padding: 40px 24px 24px;
+  padding: 40px 24px;
+  text-align: center;
+  background-color: transparent;
+  color: white;
 }
 
-footer .footer p {
+.footer p {
   margin: 0;
 }
 
+/* QR Code row */
+.footer .footer-qr {
+  padding: 20px 0;
+}
+
+.footer .footer-qr img {
+  max-width: 100px !important;
+  width: 100px !important;
+  height: auto !important;
+  border-radius: 8px;
+  border: 2px solid #00bfff;
+  box-shadow: 0 0 15px #00bfff60;
+}
+
+.footer .footer-qr a {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.footer .footer-qr a:hover {
+  transform: scale(1.05);
+}
+
+/* All images in footer - fallback */
+.footer img {
+  max-width: 100px !important;
+  width: 100px !important;
+  height: auto !important;
+  border-radius: 8px;
+  border: 2px solid #00bfff;
+  box-shadow: 0 0 15px #00bfff60;
+}
+
+/* Footer links */
+.footer .footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: rgba(0, 191, 255, 0.15);
+  border: 1px solid #00bfff;
+  border-radius: 8px;
+  color: white !important;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-size: 1.25em;
+}
+
+.footer .footer-link:hover {
+  background: rgba(0, 191, 255, 0.3);
+  box-shadow: 0 0 15px #00bfff60;
+  color: white !important;
+  text-decoration: none;
+}
+
+/* Demo recording row */
+.footer .footer-demo {
+  padding: 16px 0;
+}
+
+/* PDF presentation row */
+.footer .footer-pdf {
+  padding: 16px 0;
+}
+
+.footer a {
+  color: white !important;
+  font-size: 1.25em;
+}
+
+.footer a:hover {
+  color: #00ffff !important;
+}
+
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+  .footer {
+    padding: 40px 32px;
   }
 }

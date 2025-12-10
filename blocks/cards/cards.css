@@ -8,8 +8,32 @@
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
+  border: 1px solid #00ffff;
   background-color: var(--background-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 8px #00ffff60;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cards > ul > li:nth-child(3n+1) {
+  border-color: #00ffff;
+  box-shadow: 0 0 8px #00ffff60;
+}
+
+.cards > ul > li:nth-child(3n+2) {
+  border-color: #00bfff;
+  box-shadow: 0 0 8px #00bfff60;
+}
+
+.cards > ul > li:nth-child(3n+3) {
+  border-color: #1e90ff;
+  box-shadow: 0 0 8px #1e90ff60;
+}
+
+.cards > ul > li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px currentcolor;
 }
 
 .cards .cards-card-body {
@@ -24,4 +48,168 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+
+/* Team cards layout: 3 cards on first row, 2 centered on second row */
+.cards.team > ul {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-content: center;
+}
+
+.cards.team > ul > li {
+  grid-column: span 2;
+}
+
+.cards.team > ul > li:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.cards.team > ul > li:nth-child(5) {
+  grid-column: 4 / span 2;
+}
+
+/* Team cards with more than 5: evenly spaced 3 per row */
+.cards.team.team-many > ul {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cards.team.team-many > ul > li {
+  grid-column: span 1;
+}
+
+.cards.team.team-many > ul > li:nth-child(4),
+.cards.team.team-many > ul > li:nth-child(5) {
+  grid-column: span 1;
+}
+
+/* Project cards: full-bleed image with overlaid text */
+.cards.project > ul > li {
+  position: relative;
+  overflow: hidden;
+}
+
+.cards.project .cards-card-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cards.project .cards-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: unset;
+}
+
+.cards.project .cards-card-body {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+  margin: 0;
+  padding: 16px;
+}
+
+.cards.project .cards-card-body * {
+  color: white;
+}
+
+/* Team cards modal */
+.cards-modal-hidden {
+  display: none;
+}
+
+.cards-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cards-modal.visible {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.cards-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.cards-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  margin: auto;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #00bfff;
+  border-radius: 16px;
+  box-shadow: 0 0 30px #00bfff60, 0 16px 48px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  z-index: 1001;
+}
+
+.cards-modal.visible .cards-modal-content {
+  transform: scale(1);
+}
+
+.cards-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.cards-modal-close:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.cards-modal-body {
+  padding: 32px;
+  color: #333;
+}
+
+.cards-modal-body p {
+  margin: 0 0 16px;
+  line-height: 1.6;
+  font-size: 1.1em;
+}
+
+.cards-modal-body p:last-child {
+  margin-bottom: 0;
+}
+
+.cards-modal-body a {
+  color: #0077cc;
+}
+
+.cards-modal-body a:hover {
+  color: #005599;
 }
