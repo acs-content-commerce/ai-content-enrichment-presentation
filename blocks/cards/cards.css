@@ -59,6 +59,8 @@
 
 .cards.team > ul > li {
   grid-column: span 2;
+  position: relative;
+  overflow: hidden;
 }
 
 .cards.team > ul > li:nth-child(4) {
@@ -67,6 +69,34 @@
 
 .cards.team > ul > li:nth-child(5) {
   grid-column: 4 / span 2;
+}
+
+.cards.team .cards-card-image {
+  position: relative;
+}
+
+.cards.team > ul > li img {
+  aspect-ratio: 1 / 1;
+}
+
+.cards.team .cards-card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 12px 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+}
+
+.cards.team .cards-card-body > *:first-child {
+  color: white;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  margin: 0;
+}
+
+.cards.team .cards-card-body > *:not(:first-child) {
+  display: none;
 }
 
 /* Team cards with more than 5: evenly spaced 3 per row */
@@ -83,6 +113,50 @@
   grid-column: span 1;
 }
 
+/* Agentic Team cards: 3 cards per row, image with name overlay */
+.cards.agentic-team > ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 200px));
+  gap: 36px;
+  justify-content: center;
+}
+
+.cards.agentic-team > ul > li {
+  position: relative;
+  overflow: hidden;
+  max-width: 200px;
+}
+
+.cards.agentic-team .cards-card-image {
+  position: relative;
+}
+
+.cards.agentic-team > ul > li img {
+  aspect-ratio: 1 / 1;
+  display: block;
+}
+
+.cards.agentic-team .cards-card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 8px 10px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+}
+
+.cards.agentic-team .cards-card-body > *:first-child {
+  color: white;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  margin: 0;
+  font-size: 0.85em;
+}
+
+.cards.agentic-team .cards-card-body > *:not(:first-child) {
+  display: none;
+}
+
 /* Project cards: full-bleed image with overlaid text */
 .cards.project > ul > li {
   position: relative;
@@ -92,38 +166,44 @@
 .cards.project .cards-card-link {
   display: block;
   text-decoration: none;
-  color: inherit;
+  color: white;
 }
 
 .cards.project .cards-card-image {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+  position: relative;
 }
 
 .cards.project .cards-card-image img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  aspect-ratio: unset;
+  display: block;
 }
 
 .cards.project .cards-card-body {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 1;
-  color: white;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
   margin: 0;
-  padding: 16px;
+  padding: 12px 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
 }
 
-.cards.project .cards-card-body * {
+.cards.project .cards-card-body > *:first-child {
   color: white;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  margin: 0;
+}
+
+.cards.project a {
+  --link-color: unset;
+  color: white;
+}
+
+.cards.project .cards-card-body > *:not(:first-child) {
+  display: none;
 }
 
 /* Team cards modal */

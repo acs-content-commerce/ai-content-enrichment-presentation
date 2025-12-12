@@ -28,9 +28,9 @@ function setupTeamModals(block, ul) {
     const body = li.querySelector('.cards-card-body');
     if (!body) return;
 
-    // Get all content after the first element (name/title) for the modal
     const allContent = [...body.children];
-    const modalContent = allContent.slice(1); // Everything after the first element
+    // Content after first element goes into modal
+    const modalContent = allContent.slice(1);
 
     // Store modal content as data attribute
     if (modalContent.length > 0) {
@@ -80,11 +80,11 @@ export default function decorate(block) {
   ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
   block.replaceChildren(ul);
 
-  // Setup modals for team cards
-  if (block.classList.contains('team')) {
+  // Setup modals for team cards and agentic-team cards
+  if (block.classList.contains('team') || block.classList.contains('agentic-team')) {
     setupTeamModals(block, ul);
 
-    // Add class for more than 5 cards to use standard 3-column layout
+    // Add class for more than 5 cards to use different layout
     const cardCount = ul.querySelectorAll('li').length;
     if (cardCount > 5) {
       block.classList.add('team-many');
